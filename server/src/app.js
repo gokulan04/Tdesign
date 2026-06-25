@@ -6,6 +6,7 @@ import { protect } from "./middleware/authMiddleware.js";
 import { authorize } from "./middleware/roleMiddleware.js";
 import tShirtModelRoutes from "./routes/tShirtModelRoutes.js";
 import designRoutes from "./routes/designRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/tshirt", tShirtModelRoutes);
 
 app.use("/api/designs", designRoutes);
+
+app.use("/api/cart", cartRoutes);
 
 app.get("/api/admin/test", protect, authorize("admin"), (req, res) => {
     console.log("test---");
